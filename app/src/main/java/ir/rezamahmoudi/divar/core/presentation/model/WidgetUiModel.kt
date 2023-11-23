@@ -4,4 +4,7 @@ import androidx.compose.runtime.Stable
 import ir.rezamahmoudi.divar.core.data.model.Domain
 
 @Stable
-sealed class WidgetUiModel : Domain
+interface WidgetUiModel : Domain
+
+@Stable
+interface WidgetDataUiModel : Domain

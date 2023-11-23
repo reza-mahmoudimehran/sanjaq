@@ -26,9 +26,9 @@ class FetchPostsPagingDataSource(
                 body = FetchPostsBody(page = page)
             )
             LoadResult.Page(
-                data = response.posts,
+                data = response.widgetsList,
                 prevKey = if (page == STARTING_PAGE_INDEX) null else page.minus(1),
-                nextKey = if (response.posts.isEmpty() || response.lastPostDate < 0) null else page.plus(1)
+                nextKey = if (response.widgetsList.isEmpty() || response.lastPostDate < 0) null else page.plus(1)
             )
         } catch (exception: Exception) {
             return LoadResult.Error(exception)
@@ -36,6 +36,6 @@ class FetchPostsPagingDataSource(
     }
 
     companion object {
-        private const val STARTING_PAGE_INDEX = 1
+        private const val STARTING_PAGE_INDEX = 0
     }
 }

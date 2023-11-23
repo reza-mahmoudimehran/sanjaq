@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import ir.rezamahmoudi.divar.cityselection.presentation.navigation.citySelectionScreen
 import ir.rezamahmoudi.divar.core.presentation.screen.Screen
+import ir.rezamahmoudi.divar.home.presentation.navigation.homeScreen
 import ir.rezamahmoudi.divar.splash.presentation.navigation.splashScreen
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -60,6 +61,11 @@ fun DivarNavHost(
         )
 
         citySelectionScreen(
+            onNavigateToScreen = onNavigateToScreen,
+            popBackStack = popBackStack
+        )
+
+        homeScreen(
             onNavigateToScreen = onNavigateToScreen,
             popBackStack = popBackStack
         )
