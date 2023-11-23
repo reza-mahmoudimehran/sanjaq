@@ -1,4 +1,4 @@
-package ir.rezamahmoudi.divar.ui.theme
+package ir.rezamahmoudi.divar.core.presentation.designsystem
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
