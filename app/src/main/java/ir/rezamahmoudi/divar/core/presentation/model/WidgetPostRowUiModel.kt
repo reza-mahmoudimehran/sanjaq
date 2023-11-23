@@ -5,7 +5,13 @@ import androidx.compose.runtime.Stable
 @Stable
 data class WidgetPostRowUiModel(
     val data: WidgetPostRowDataUiModel
-) : WidgetUiModel
+) : WidgetUiModel {
+    companion object {
+        val EMPTY = WidgetPostRowUiModel(
+            data = WidgetPostRowDataUiModel.EMPTY
+        )
+    }
+}
 
 @Stable
 data class WidgetPostRowDataUiModel(
@@ -14,4 +20,14 @@ data class WidgetPostRowDataUiModel(
     val price: String,
     val thumbnail: String,
     val district: String
-) : WidgetDataUiModel
+) : WidgetDataUiModel {
+    companion object {
+        val EMPTY = WidgetPostRowDataUiModel(
+            title = "",
+            token = "",
+            price = "",
+            thumbnail = "",
+            district = ""
+        )
+    }
+}
