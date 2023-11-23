@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import ir.rezamahmoudi.divar.citySelection.presentation.navigation.citySelectionScreen
+import ir.rezamahmoudi.divar.cityselection.presentation.navigation.citySelectionScreen
 import ir.rezamahmoudi.divar.core.presentation.screen.Screen
 import ir.rezamahmoudi.divar.splash.presentation.navigation.splashScreen
 
@@ -59,6 +59,9 @@ fun DivarNavHost(
             popBackStack = popBackStack
         )
 
-        citySelectionScreen()
+        citySelectionScreen(
+            onNavigateToScreen = onNavigateToScreen,
+            popBackStack = popBackStack
+        )
     }
 }

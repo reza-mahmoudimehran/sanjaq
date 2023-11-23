@@ -36,8 +36,10 @@ data class DesignSystem(
 
     val primaryCardBackground: Color = Gray10,
 
-    val primaryText: Color = Gray50,
-    val sSecondaryText: Color = Lemon,
+    val primaryText: Color = neutral70,
+    val secondaryText: Color = Lemon,
 
-    val primaryIconTint: Color = neutral40
+    val primaryIconTint: Color = neutral40,
+
+    val primaryDivider: Color = neutral20
 )
