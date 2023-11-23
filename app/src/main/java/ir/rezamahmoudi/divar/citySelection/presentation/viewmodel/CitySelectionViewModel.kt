@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.rezamahmoudi.divar.cityselection.domain.usecase.FetchCitiesUseCase
-import ir.rezamahmoudi.divar.cityselection.domain.usecase.SaveDefaultCityIdUseCase
+import ir.rezamahmoudi.divar.cityselection.domain.usecase.SaveSelectedCityIdUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CitySelectionViewModel @Inject constructor(
     private val fetchCitiesUseCase: FetchCitiesUseCase,
-    private val saveDefaultCityIdUseCase: SaveDefaultCityIdUseCase
+    private val saveSelectedCityIdUseCase: SaveSelectedCityIdUseCase
 ) : ViewModel(), CitySelectionContract {
 
     private val _mutableState = MutableStateFlow(CitySelectionContract.State.EMPTY)
@@ -49,8 +49,8 @@ class CitySelectionViewModel @Inject constructor(
 
     private fun onSelectCity(cityId: String) {
         viewModelScope.launch {
-            saveDefaultCityIdUseCase(defaultCityId = cityId)
-            effectChannel.send(CitySelectionContract.Effect.PopBackStack)
+            saveSelectedCityIdUseCase(defaultCityId = cityId)
+            effectChannel.send(CitySelectionContract.Effect.NavigateToHome)
         }
     }
 }
