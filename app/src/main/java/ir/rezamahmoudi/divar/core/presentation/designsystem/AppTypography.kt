@@ -67,6 +67,11 @@ data class AppTypography(
         fontSize = 16.sp,
         fontWeight = FontWeight.Bold
     ),
+    val text16ExtraBold: TextStyle = TextStyle(
+        fontFamily = mainFont,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.ExtraBold
+    ),
     val text18Bold: TextStyle = TextStyle(
         fontFamily = mainFont,
         fontSize = 18.sp,

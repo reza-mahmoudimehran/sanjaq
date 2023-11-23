@@ -50,7 +50,7 @@ class CitySelectionViewModel @Inject constructor(
     private fun onSelectCity(cityId: String) {
         viewModelScope.launch {
             saveSelectedCityIdUseCase(defaultCityId = cityId)
-            effectChannel.send(CitySelectionContract.Effect.PopBackStack)
+            effectChannel.send(CitySelectionContract.Effect.NavigateToHome)
         }
     }
 }

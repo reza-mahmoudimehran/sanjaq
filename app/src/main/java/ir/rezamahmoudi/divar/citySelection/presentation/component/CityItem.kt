@@ -32,8 +32,6 @@ fun CityItem(
             style = AppTheme.typography.text14Bold,
             color = AppTheme.colors.designSystem.primaryText
         )
-        Divider(
-            color = AppTheme.colors.designSystem.primaryDivider
-        )
+        Divider(color = AppTheme.colors.designSystem.primaryDivider)
     }
 }

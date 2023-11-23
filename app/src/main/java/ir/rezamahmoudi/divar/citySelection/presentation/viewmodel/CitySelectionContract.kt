@@ -14,6 +14,7 @@ interface CitySelectionContract :
 
     interface Effect {
         object PopBackStack : Effect
+        object NavigateToHome : Effect
     }
 
     @Stable

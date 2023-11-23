@@ -11,6 +11,7 @@ import ir.rezamahmoudi.divar.cityselection.presentation.component.CityItem
 import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionContract
 import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionViewModel
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
+import ir.rezamahmoudi.divar.core.presentation.screen.Screen
 import ir.rezamahmoudi.divar.core.util.compose.collectInLaunchedEffect
 import ir.rezamahmoudi.divar.core.util.compose.use
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -28,6 +29,9 @@ fun CitySelectionScreen(
         when (it) {
             CitySelectionContract.Effect.PopBackStack -> {
                 popBackStack()
+            }
+            CitySelectionContract.Effect.NavigateToHome -> {
+                onNavigateToScreen(Screen.Home.route)
             }
         }
     }

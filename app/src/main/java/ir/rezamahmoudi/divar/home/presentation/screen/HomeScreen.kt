@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
-import ir.rezamahmoudi.divar.core.presentation.component.WidgetItem
+import ir.rezamahmoudi.divar.core.presentation.component.widget.WidgetItem
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
 import ir.rezamahmoudi.divar.core.util.compose.collectInLaunchedEffect
 import ir.rezamahmoudi.divar.core.util.compose.use
@@ -35,7 +35,10 @@ fun HomeScreen(
     ) {
         items(posts.itemCount) { index ->
             posts[index]?.let {
-                WidgetItem(widget = it)
+                WidgetItem(
+                    widget = it,
+                    onNavigateToScreen = onNavigateToScreen
+                )
             }
         }
     }
