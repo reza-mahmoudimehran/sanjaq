@@ -1,4 +1,4 @@
-package ir.reza_mahmoudi.divar.ui.theme
+package ir.rezamahmoudi.divar.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
