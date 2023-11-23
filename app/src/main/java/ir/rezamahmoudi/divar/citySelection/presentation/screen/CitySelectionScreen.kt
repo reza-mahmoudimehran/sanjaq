@@ -13,6 +13,7 @@ import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionV
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
 import ir.rezamahmoudi.divar.core.util.compose.collectInLaunchedEffect
 import ir.rezamahmoudi.divar.core.util.compose.use
+import ir.rezamahmoudi.divar.core.util.log.showErrorLog
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @OptIn(InternalCoroutinesApi::class)
@@ -22,6 +23,7 @@ fun CitySelectionScreen(
     onNavigateToScreen: (String) -> Unit,
     popBackStack: () -> Unit
 ) {
+    showErrorLog("CitySelectionScreen")
     val (state, effect, dispatcher) = use(viewModel = viewModel)
 
     effect.collectInLaunchedEffect {

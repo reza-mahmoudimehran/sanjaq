@@ -4,9 +4,9 @@ import ir.rezamahmoudi.divar.core.domain.datastore.DataStoreRepository
 import ir.rezamahmoudi.divar.core.domain.datastore.preferences.PreferencesKeys
 import javax.inject.Inject
 
-class SaveDefaultCityIdUseCase @Inject constructor(
+class SaveSelectedCityIdUseCase @Inject constructor(
     private val repository: DataStoreRepository
 ) {
     suspend operator fun invoke(defaultCityId: String) =
-        repository.save(key = PreferencesKeys.defaultCityId, value = defaultCityId)
+        repository.save(key = PreferencesKeys.selectedCityId, value = defaultCityId)
 }

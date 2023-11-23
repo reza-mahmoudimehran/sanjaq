@@ -61,6 +61,7 @@ dependencies {
     val moshiVersion = "1.14.0"
     val coilVersion = "2.4.0"
     val lottieVersion = "4.0.0"
+    val pagingVersion = "3.2.1"
 
     // APP
     implementation("androidx.core:core-ktx:1.12.0")
@@ -108,6 +109,10 @@ dependencies {
 
     // Lottie
     implementation("com.airbnb.android:lottie-compose:$lottieVersion")
+
+    // Paging
+    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
+    implementation("androidx.paging:paging-compose:$pagingVersion")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
