@@ -1,14 +1,12 @@
 package ir.rezamahmoudi.divar.home.presentation.screen
 
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import ir.rezamahmoudi.divar.core.presentation.component.widget.WidgetItem
-import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
 import ir.rezamahmoudi.divar.core.util.compose.collectInLaunchedEffect
 import ir.rezamahmoudi.divar.core.util.compose.use
 import ir.rezamahmoudi.divar.home.presentation.viewmodel.HomeViewModel
@@ -31,7 +29,6 @@ fun HomeScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimensions.mainContentPadding)
     ) {
         items(posts.itemCount) { index ->
             posts[index]?.let {

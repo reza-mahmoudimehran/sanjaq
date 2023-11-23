@@ -33,6 +33,7 @@ fun PostRowItem(
         modifier = modifier.clickable {
             onNavigateToScreen(Screen.PostDetails.createRoute(postToken = post.token))
         }
+            .padding(vertical = 4.dp, horizontal = AppTheme.dimensions.mainContentPadding)
     ) {
         Row(
             modifier = Modifier

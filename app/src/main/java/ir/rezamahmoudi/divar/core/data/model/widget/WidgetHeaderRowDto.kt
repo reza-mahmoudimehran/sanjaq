@@ -13,7 +13,7 @@ data class WidgetHeaderRowDto(
 @JsonClass(generateAdapter = true)
 data class WidgetHeaderRowDataDto(
     val title: String,
-    val subtitle: String
+    val subtitle: String?
 ) : WidgetDataDto {
     override fun asDomain(): WidgetHeaderRowDataUiModel = WidgetHeaderRowDataUiModel(
         title = title,
