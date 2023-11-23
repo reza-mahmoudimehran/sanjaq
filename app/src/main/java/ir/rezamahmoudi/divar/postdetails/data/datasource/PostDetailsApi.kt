@@ -6,7 +6,7 @@ import retrofit2.http.Path
 
 interface PostDetailsApi {
 
-    @GET(value = "api/v1/post/view/{{postToken}}")
+    @GET(value = "v1/post/view/{postToken}")
     suspend fun fetchPostDetails(
         @Path("postToken") postToken: String
     ): PostDetailsDto

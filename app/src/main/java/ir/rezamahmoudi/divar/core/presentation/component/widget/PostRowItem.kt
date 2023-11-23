@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
 import ir.rezamahmoudi.divar.core.presentation.designsystem.ThemePreviews
 import ir.rezamahmoudi.divar.core.presentation.model.WidgetPostRowDataUiModel
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetPostRowUiModel
 import ir.rezamahmoudi.divar.core.presentation.screen.Screen
 import ir.rezamahmoudi.divar.core.presentation.widget.image.NetworkImage
 import ir.rezamahmoudi.divar.core.util.compose.PreviewWrapper
@@ -27,12 +26,12 @@ import ir.rezamahmoudi.divar.core.util.compose.PreviewWrapper
 @Composable
 fun PostRowItem(
     modifier: Modifier = Modifier,
-    post: WidgetPostRowUiModel,
+    post: WidgetPostRowDataUiModel,
     onNavigateToScreen: (String) -> Unit
 ) {
     Column(
         modifier = modifier.clickable {
-            onNavigateToScreen(Screen.PostDetails.createRoute(postToken = post.data.token))
+            onNavigateToScreen(Screen.PostDetails.createRoute(postToken = post.token))
         }
     ) {
         Row(
@@ -49,7 +48,7 @@ fun PostRowItem(
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = post.data.title,
+                    text = post.title,
                     style = AppTheme.typography.text14Bold,
                     color = AppTheme.colors.designSystem.primaryText,
                     maxLines = 2
@@ -57,7 +56,7 @@ fun PostRowItem(
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = post.data.price,
+                    text = post.price,
                     style = AppTheme.typography.text12Medium,
                     color = AppTheme.colors.designSystem.primaryText,
                     maxLines = 2
@@ -65,7 +64,7 @@ fun PostRowItem(
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = post.data.district,
+                    text = post.district,
                     style = AppTheme.typography.text12Medium,
                     color = AppTheme.colors.designSystem.primaryText,
                     maxLines = 1
@@ -77,7 +76,7 @@ fun PostRowItem(
                     .size(120.dp)
                     .clip(shape = RoundedCornerShape(12.dp)),
                 imageModifier = Modifier.fillMaxSize(),
-                url = post.data.thumbnail
+                url = post.thumbnail
             )
         }
         Divider(color = AppTheme.colors.designSystem.primaryDivider)
@@ -89,12 +88,10 @@ fun PostRowItem(
 fun PostRowItemPreview() {
     PreviewWrapper {
         PostRowItem(
-            post = WidgetPostRowUiModel.EMPTY.copy(
-                data = WidgetPostRowDataUiModel.EMPTY.copy(
-                    title = "۸۰ متر ۲خ    ۲پارکینگ    کامل تراورتن   کم واحد",
-                    price = "۷,۲۵۰,۰۰۰,۰۰۰ تومان",
-                    district = "آژانس املاک دفتر املاک مان در پونک"
-                )
+            post = WidgetPostRowDataUiModel.EMPTY.copy(
+                title = "۸۰ متر ۲خ    ۲پارکینگ    کامل تراورتن   کم واحد",
+                price = "۷,۲۵۰,۰۰۰,۰۰۰ تومان",
+                district = "آژانس املاک دفتر املاک مان در پونک"
             ),
             onNavigateToScreen = {}
         )

@@ -7,18 +7,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetTitleRowUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetTitleRowDataUiModel
 
 @Composable
 fun TitleRowItem(
     modifier: Modifier = Modifier,
-    title: WidgetTitleRowUiModel
+    title: WidgetTitleRowDataUiModel
 ) {
     Text(
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp),
-        text = title.data.text,
+        text = title.text,
         style = AppTheme.typography.text16ExtraBold,
         color = AppTheme.colors.designSystem.primaryText
     )

@@ -1,24 +1,24 @@
 package ir.rezamahmoudi.divar.core.presentation.component.widget
 
 import androidx.compose.runtime.Composable
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetPostRowUiModel
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetSubTitleRowUiModel
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetTitleRowUiModel
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetDataUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetPostRowDataUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetSubTitleRowDataUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetTitleRowDataUiModel
 
 @Composable
 fun WidgetItem(
-    widget: WidgetUiModel,
+    widget: WidgetDataUiModel,
     onNavigateToScreen: (String) -> Unit
 ) {
     when (widget) {
-        is WidgetSubTitleRowUiModel -> {
-            SubTitleRowItem(subTitle = widget)
-        }
-        is WidgetTitleRowUiModel -> {
+        is WidgetTitleRowDataUiModel -> {
             TitleRowItem(title = widget)
         }
-        is WidgetPostRowUiModel -> {
+        is WidgetSubTitleRowDataUiModel -> {
+            SubTitleRowItem(subTitle = widget)
+        }
+        is WidgetPostRowDataUiModel -> {
             PostRowItem(
                 post = widget,
                 onNavigateToScreen = onNavigateToScreen

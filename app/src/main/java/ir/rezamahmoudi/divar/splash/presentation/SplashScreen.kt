@@ -49,6 +49,6 @@ fun SplashScreen(
     LaunchedEffect(key1 = Unit) {
         delay(3_00)
         popBackStack()
-        onNavigateToScreen(Screen.CitySelection.route)
+        onNavigateToScreen(Screen.Home.route)
     }
 }

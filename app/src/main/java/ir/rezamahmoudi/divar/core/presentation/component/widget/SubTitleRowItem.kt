@@ -5,17 +5,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetSubTitleRowUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetSubTitleRowDataUiModel
 
 @Composable
 fun SubTitleRowItem(
     modifier: Modifier = Modifier,
-    subTitle: WidgetSubTitleRowUiModel
+    subTitle: WidgetSubTitleRowDataUiModel
 ) {
     Text(
         modifier = modifier
             .fillMaxWidth(),
-        text = subTitle.data.text,
+        text = subTitle.text,
         style = AppTheme.typography.text14Medium,
         color = AppTheme.colors.designSystem.primaryText
     )
