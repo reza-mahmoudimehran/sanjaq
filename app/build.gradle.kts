@@ -28,7 +28,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
+                "proguard-rules.pro"
             )
         }
     }
@@ -60,6 +60,7 @@ dependencies {
     val immutableCollection = "0.3.5"
     val moshiVersion = "1.14.0"
     val coilVersion = "2.4.0"
+    val lottieVersion = "4.0.0"
 
     // APP
     implementation("androidx.core:core-ktx:1.12.0")
@@ -88,7 +89,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
-    // moshi
+    // Moshi
     implementation("com.squareup.moshi:moshi:$moshiVersion")
     implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
@@ -97,13 +98,16 @@ dependencies {
     // Collections-Immutable
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:$immutableCollection")
 
-    // coil
+    // Coil
     implementation("io.coil-kt:coil:$coilVersion")
     implementation("io.coil-kt:coil-compose:$coilVersion")
     implementation("io.coil-kt:coil-svg:$coilVersion")
 
     implementation("androidx.compose.runtime:runtime:1.5.4")
     implementation("androidx.tracing:tracing:1.3.0-alpha02")
+
+    // Lottie
+    implementation("com.airbnb.android:lottie-compose:$lottieVersion")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
