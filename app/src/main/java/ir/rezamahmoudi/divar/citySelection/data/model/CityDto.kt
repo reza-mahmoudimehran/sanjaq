@@ -1,8 +1,8 @@
-package ir.rezamahmoudi.divar.citySelection.data.model
+package ir.rezamahmoudi.divar.cityselection.data.model
 
 import com.squareup.moshi.JsonClass
-import ir.rezamahmoudi.divar.citySelection.presentation.model.CentroidUiModel
-import ir.rezamahmoudi.divar.citySelection.presentation.model.CityUiModel
+import ir.rezamahmoudi.divar.cityselection.presentation.model.CentroidUiModel
+import ir.rezamahmoudi.divar.cityselection.presentation.model.CityUiModel
 import ir.rezamahmoudi.divar.core.data.model.Dto
 
 @JsonClass(generateAdapter = true)

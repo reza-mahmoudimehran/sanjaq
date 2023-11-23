@@ -1,7 +1,7 @@
-package ir.rezamahmoudi.divar.citySelection.domain.usecase
+package ir.rezamahmoudi.divar.cityselection.domain.usecase
 
-import ir.rezamahmoudi.divar.citySelection.domain.repository.CitySelectionRepository
-import ir.rezamahmoudi.divar.citySelection.presentation.model.CityUiModel
+import ir.rezamahmoudi.divar.cityselection.domain.repository.CitySelectionRepository
+import ir.rezamahmoudi.divar.cityselection.presentation.model.CityUiModel
 import ir.rezamahmoudi.divar.core.util.mapper.asDomain
 import kotlinx.collections.immutable.ImmutableList
 import javax.inject.Inject

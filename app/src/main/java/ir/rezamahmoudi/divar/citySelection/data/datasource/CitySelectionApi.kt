@@ -1,6 +1,6 @@
-package ir.rezamahmoudi.divar.citySelection.data.datasource
+package ir.rezamahmoudi.divar.cityselection.data.datasource
 
-import ir.rezamahmoudi.divar.citySelection.presentation.model.PlacesListResponse
+import ir.rezamahmoudi.divar.cityselection.presentation.model.PlacesListResponse
 import retrofit2.http.GET
 
 interface CitySelectionApi {

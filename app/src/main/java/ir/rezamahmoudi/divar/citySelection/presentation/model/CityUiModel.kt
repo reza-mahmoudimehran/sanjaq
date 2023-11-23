@@ -1,4 +1,4 @@
-package ir.rezamahmoudi.divar.citySelection.presentation.model
+package ir.rezamahmoudi.divar.cityselection.presentation.model
 
 import androidx.compose.runtime.Stable
 import ir.rezamahmoudi.divar.core.data.model.Domain

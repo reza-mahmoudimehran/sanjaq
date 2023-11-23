@@ -1,7 +1,7 @@
-package ir.rezamahmoudi.divar.citySelection.presentation.model
+package ir.rezamahmoudi.divar.cityselection.presentation.model
 
 import com.squareup.moshi.JsonClass
-import ir.rezamahmoudi.divar.citySelection.data.model.CityDto
+import ir.rezamahmoudi.divar.cityselection.data.model.CityDto
 
 @JsonClass(generateAdapter = true)
 data class PlacesListResponse(

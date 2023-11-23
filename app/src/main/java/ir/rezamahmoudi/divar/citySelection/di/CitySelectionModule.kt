@@ -1,10 +1,10 @@
-package ir.rezamahmoudi.divar.citySelection.di
+package ir.rezamahmoudi.divar.cityselection.di
 
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import ir.rezamahmoudi.divar.citySelection.data.datasource.CitySelectionApi
+import ir.rezamahmoudi.divar.cityselection.data.datasource.CitySelectionApi
 import retrofit2.Retrofit
 
 @Module
