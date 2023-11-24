@@ -1,6 +1,6 @@
 package ir.rezamahmoudi.divar.cityselection.domain.repository
 
-import ir.rezamahmoudi.divar.cityselection.presentation.model.PlacesListResponse
+import ir.rezamahmoudi.divar.cityselection.data.model.PlacesListResponse
 
 interface CitySelectionRepository {
 

@@ -7,19 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetTitleRowDataUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetDescriptionRowDataUiModel
 
 @Composable
-fun TitleRowItem(
+fun DescriptionRowItem(
     modifier: Modifier = Modifier,
-    title: WidgetTitleRowDataUiModel
+    description: WidgetDescriptionRowDataUiModel
 ) {
     Text(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp, horizontal = AppTheme.dimensions.mainContentPadding),
-        text = title.text,
-        style = AppTheme.typography.text16ExtraBold,
+            .padding(vertical = 4.dp, horizontal = AppTheme.dimensions.mainContentPadding),
+        text = description.text,
+        style = AppTheme.typography.text12Medium,
         color = AppTheme.colors.designSystem.primaryText
     )
 }

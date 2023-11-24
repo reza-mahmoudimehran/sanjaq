@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.rezamahmoudi.divar.core.di.qualifiers.IoDispatcher
-import ir.rezamahmoudi.divar.core.presentation.model.WidgetUiModel
+import ir.rezamahmoudi.divar.core.presentation.model.WidgetDataUiModel
 import ir.rezamahmoudi.divar.home.domain.usecase.FetchPostsUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.channels.Channel
@@ -47,7 +47,7 @@ class HomeViewModel @Inject constructor(
                 .updatePosts()
         }
     }
-    private fun Flow<PagingData<WidgetUiModel>>.updatePosts() {
+    private fun Flow<PagingData<WidgetDataUiModel>>.updatePosts() {
         _mutableState.update {
             it.copy(
                 posts = this

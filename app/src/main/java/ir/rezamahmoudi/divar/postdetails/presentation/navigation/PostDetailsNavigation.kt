@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import ir.rezamahmoudi.divar.core.presentation.screen.Screen
 import ir.rezamahmoudi.divar.core.util.constant.NavArguments.POST_TOKEN_ARGUMENT
-import ir.rezamahmoudi.divar.postdetails.presentation.PostDetailsScreen
+import ir.rezamahmoudi.divar.postdetails.presentation.screen.PostDetailsScreen
 
 fun NavGraphBuilder.postDetailsScreen(
     onNavigateToScreen: (String) -> Unit,
@@ -23,7 +23,6 @@ fun NavGraphBuilder.postDetailsScreen(
         )
     ) {
         PostDetailsScreen(
-            postToken = it.arguments?.getString(POST_TOKEN_ARGUMENT),
             popBackStack = popBackStack,
             onNavigateToScreen = onNavigateToScreen
         )

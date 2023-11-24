@@ -1,8 +1,8 @@
 package ir.rezamahmoudi.divar.cityselection.data.repository
 
 import ir.rezamahmoudi.divar.cityselection.data.datasource.CitySelectionRemoteDataSource
+import ir.rezamahmoudi.divar.cityselection.data.model.PlacesListResponse
 import ir.rezamahmoudi.divar.cityselection.domain.repository.CitySelectionRepository
-import ir.rezamahmoudi.divar.cityselection.presentation.model.PlacesListResponse
 import javax.inject.Inject
 
 class CitySelectionRepositoryImpl @Inject constructor(

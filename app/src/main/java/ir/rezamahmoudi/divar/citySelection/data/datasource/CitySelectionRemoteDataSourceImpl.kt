@@ -1,6 +1,6 @@
 package ir.rezamahmoudi.divar.cityselection.data.datasource
 
-import ir.rezamahmoudi.divar.cityselection.presentation.model.PlacesListResponse
+import ir.rezamahmoudi.divar.cityselection.data.model.PlacesListResponse
 import javax.inject.Inject
 
 class CitySelectionRemoteDataSourceImpl @Inject constructor(
