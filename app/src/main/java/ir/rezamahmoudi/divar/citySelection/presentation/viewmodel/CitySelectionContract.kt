@@ -8,13 +8,16 @@ import kotlinx.collections.immutable.persistentListOf
 
 interface CitySelectionContract :
     UnidirectionalViewModel<CitySelectionContract.Event, CitySelectionContract.Effect, CitySelectionContract.State> {
+
     interface Event {
         data class OnSelectCity(val cityId: String) : Event
+        data class LocationReceived(val lat: Double, val long: Double) : Event
     }
 
     interface Effect {
         object PopBackStack : Effect
         object NavigateToHome : Effect
+        object CheckLocationPermission : Effect
     }
 
     @Stable

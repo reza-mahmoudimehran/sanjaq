@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.rezamahmoudi.divar.cityselection.domain.usecase.FetchCitiesUseCase
 import ir.rezamahmoudi.divar.cityselection.domain.usecase.SaveSelectedCityIdUseCase
+import ir.rezamahmoudi.divar.core.util.log.showErrorLog
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +20,7 @@ import javax.inject.Inject
 class CitySelectionViewModel @Inject constructor(
     private val fetchCitiesUseCase: FetchCitiesUseCase,
     private val saveSelectedCityIdUseCase: SaveSelectedCityIdUseCase
+//    private val locationService: LocationService,
 ) : ViewModel(), CitySelectionContract {
 
     private val _mutableState = MutableStateFlow(CitySelectionContract.State.EMPTY)
@@ -29,8 +31,27 @@ class CitySelectionViewModel @Inject constructor(
 
     init {
         fetchCities()
+        checkLocationPermission()
     }
 
+    override fun event(event: CitySelectionContract.Event) {
+        when (event) {
+            is CitySelectionContract.Event.OnSelectCity -> {
+                onSelectCity(cityId = event.cityId)
+            }
+            is CitySelectionContract.Event.LocationReceived -> {
+                getCurrentLocationCityId(lat = event.lat, long = event.long)
+            }
+        }
+    }
+
+    private fun checkLocationPermission() {
+        viewModelScope.launch {
+            effectChannel.send(
+                CitySelectionContract.Effect.CheckLocationPermission
+            )
+        }
+    }
     private fun fetchCities() {
         viewModelScope.launch {
             fetchCitiesUseCase().onSuccess { cities ->
@@ -39,12 +60,8 @@ class CitySelectionViewModel @Inject constructor(
         }
     }
 
-    override fun event(event: CitySelectionContract.Event) {
-        when (event) {
-            is CitySelectionContract.Event.OnSelectCity -> {
-                onSelectCity(cityId = event.cityId)
-            }
-        }
+    private fun getCurrentLocationCityId(lat: Double, long: Double) {
+        showErrorLog("Current Location $lat $long")
     }
 
     private fun onSelectCity(cityId: String) {

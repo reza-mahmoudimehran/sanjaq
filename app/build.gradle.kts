@@ -62,6 +62,7 @@ dependencies {
     val coilVersion = "2.4.0"
     val lottieVersion = "4.0.0"
     val pagingVersion = "3.2.1"
+    val accompanistVersion = "0.31.0-alpha"
 
     // APP
     implementation("androidx.core:core-ktx:1.12.0")
@@ -99,6 +100,8 @@ dependencies {
     // Collections-Immutable
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:$immutableCollection")
 
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
     // Coil
     implementation("io.coil-kt:coil:$coilVersion")
     implementation("io.coil-kt:coil-compose:$coilVersion")
@@ -106,6 +109,9 @@ dependencies {
 
     implementation("androidx.compose.runtime:runtime:1.5.4")
     implementation("androidx.tracing:tracing:1.3.0-alpha02")
+
+    // Accompanist
+    implementation("com.google.accompanist:accompanist-permissions:$accompanistVersion")
 
     // Lottie
     implementation("com.airbnb.android:lottie-compose:$lottieVersion")
