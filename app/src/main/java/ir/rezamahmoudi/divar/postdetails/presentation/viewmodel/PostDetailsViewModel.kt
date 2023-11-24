@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.rezamahmoudi.divar.core.util.constant.NavArguments.POST_TOKEN_ARGUMENT
-import ir.rezamahmoudi.divar.core.util.log.showErrorLog
 import ir.rezamahmoudi.divar.postdetails.domain.usecase.FetchPostDetailsUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -42,7 +41,6 @@ class PostDetailsViewModel @Inject constructor(
 
     private fun fetchPostDetails() {
         viewModelScope.launch {
-            showErrorLog("fetchPostDetails $postToken")
             postToken?.let { token ->
                 fetchPostDetailsUseCase(postToken = token).onSuccess { postDetails ->
                     _mutableState.update { it.copy(postDetails = postDetails) }

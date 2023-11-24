@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Divar</string>
+    <string name="your_city_title">شهر شما</string>
+    <string name="my_current_city_title">انتخاب شهر فعلی من</string>
+    <string name="get_your_city_title">در حال دریافت شهر شما</string>
 </resources>

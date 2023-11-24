@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.rezamahmoudi.divar.cityselection.domain.usecase.FetchCitiesUseCase
+import ir.rezamahmoudi.divar.cityselection.domain.usecase.FindCurrentCityUseCase
 import ir.rezamahmoudi.divar.cityselection.domain.usecase.SaveSelectedCityIdUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CitySelectionViewModel @Inject constructor(
     private val fetchCitiesUseCase: FetchCitiesUseCase,
+    private val findCurrentCityUseCase: FindCurrentCityUseCase,
     private val saveSelectedCityIdUseCase: SaveSelectedCityIdUseCase
 ) : ViewModel(), CitySelectionContract {
 
@@ -29,6 +31,36 @@ class CitySelectionViewModel @Inject constructor(
 
     init {
         fetchCities()
+        checkLocationPermission()
+    }
+
+    override fun event(event: CitySelectionContract.Event) {
+        when (event) {
+            is CitySelectionContract.Event.OnSelectCity -> {
+                onSelectCity(cityId = event.cityId)
+            }
+            is CitySelectionContract.Event.LocationReceived -> {
+                getCurrentLocationCityId(lat = event.lat, long = event.long)
+            }
+            is CitySelectionContract.Event.OnRequestLocationPermission -> {
+                checkLocationPermission()
+            }
+            is CitySelectionContract.Event.UpdateIsPermissionGranted -> {
+                updateIsPermissionGranted(isGranted = event.isGranted)
+            }
+        }
+    }
+
+    private fun updateIsPermissionGranted(isGranted: Boolean) {
+        _mutableState.update { it.copy(isLocationPermissionGranted = isGranted) }
+    }
+
+    private fun checkLocationPermission() {
+        viewModelScope.launch {
+            effectChannel.send(
+                CitySelectionContract.Effect.CheckLocationPermission
+            )
+        }
     }
 
     private fun fetchCities() {
@@ -39,10 +71,14 @@ class CitySelectionViewModel @Inject constructor(
         }
     }
 
-    override fun event(event: CitySelectionContract.Event) {
-        when (event) {
-            is CitySelectionContract.Event.OnSelectCity -> {
-                onSelectCity(cityId = event.cityId)
+    private fun getCurrentLocationCityId(lat: Double, long: Double) {
+        viewModelScope.launch {
+            findCurrentCityUseCase(lat = lat, long = long).onSuccess { city ->
+                _mutableState.update {
+                    it.copy(
+                        currentCity = city
+                    )
+                }
             }
         }
     }
