@@ -14,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
+import ir.rezamahmoudi.divar.R
 import ir.rezamahmoudi.divar.cityselection.presentation.component.CityItem
 import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionContract
 import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionViewModel
@@ -53,9 +55,11 @@ fun CitySelectionScreen(
             CitySelectionContract.Effect.PopBackStack -> {
                 popBackStack()
             }
+
             CitySelectionContract.Effect.NavigateToHome -> {
                 onNavigateToScreen(Screen.Home.route)
             }
+
             is CitySelectionContract.Effect.CheckLocationPermission -> {
                 if (permissionState.allPermissionsGranted.not()) {
                     requestPermissionLauncher.launch(
@@ -70,11 +74,20 @@ fun CitySelectionScreen(
     }
 
     LaunchedEffect(key1 = permissionState.allPermissionsGranted) {
-        if (permissionState.allPermissionsGranted.not()) return@LaunchedEffect
+        if (permissionState.allPermissionsGranted) {
+            dispatcher.invoke(
+                CitySelectionContract.Event.UpdateIsPermissionGranted(isGranted = true)
+            )
+        } else {
+            return@LaunchedEffect
+        }
 
         context.getCurrentLocation { location ->
             dispatcher.invoke(
-                CitySelectionContract.Event.LocationReceived(lat = location.latitude, long = location.longitude)
+                CitySelectionContract.Event.LocationReceived(
+                    lat = location.latitude,
+                    long = location.longitude
+                )
             )
         }
     }
@@ -89,10 +102,21 @@ fun CitySelectionScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
-                        dispatcher.invoke(CitySelectionContract.Event.OnSelectCity("1"))
+                        if (state.isLocationPermissionGranted.not()) {
+                            dispatcher.invoke(CitySelectionContract.Event.OnRequestLocationPermission)
+                        } else {
+                            state.currentCity?.id?.let {
+                                dispatcher.invoke(CitySelectionContract.Event.OnSelectCity(it.toString()))
+                            }
+                        }
                     }
                     .padding(vertical = 12.dp, horizontal = 2.dp),
-                text = "انتخاب شهر فعلی من",
+                text = if (state.isLocationPermissionGranted) {
+                    state.currentCity?.name?.let { "${stringResource(id = R.string.your_city_title)}: $it" }
+                        ?: stringResource(id = R.string.get_your_city_title)
+                } else {
+                    stringResource(id = R.string.my_current_city_title)
+                },
                 style = AppTheme.typography.text14Bold,
                 color = AppTheme.colors.designSystem.primaryText
             )

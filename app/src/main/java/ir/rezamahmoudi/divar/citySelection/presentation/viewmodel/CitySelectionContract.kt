@@ -12,6 +12,8 @@ interface CitySelectionContract :
     interface Event {
         data class OnSelectCity(val cityId: String) : Event
         data class LocationReceived(val lat: Double, val long: Double) : Event
+        object OnRequestLocationPermission : Event
+        data class UpdateIsPermissionGranted(val isGranted: Boolean) : Event
     }
 
     interface Effect {
@@ -22,11 +24,15 @@ interface CitySelectionContract :
 
     @Stable
     data class State(
-        val cities: ImmutableList<CityUiModel>
+        val isLocationPermissionGranted: Boolean,
+        val cities: ImmutableList<CityUiModel>,
+        val currentCity: CityUiModel?
     ) {
         companion object {
             val EMPTY = State(
-                cities = persistentListOf()
+                isLocationPermissionGranted = false,
+                cities = persistentListOf(),
+                currentCity = null
             )
         }
     }
