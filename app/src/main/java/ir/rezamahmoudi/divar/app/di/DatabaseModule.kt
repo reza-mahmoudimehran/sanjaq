@@ -19,4 +19,7 @@ class DatabaseModule {
 
     @Provides
     fun providePostDetailsDao(database: DivarDatabase) = database.getPostDetailsDao()
+
+    @Provides
+    fun provideCitySelectionDao(database: DivarDatabase) = database.getCitySelectionDao()
 }

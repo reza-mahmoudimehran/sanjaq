@@ -15,7 +15,7 @@ class PostDetailsRepositoryImpl @Inject constructor(
     override suspend fun fetchPostDetails(params: FetchPostDetailsParams): Result<PostDetailsDto> =
         remoteDataSource.fetchPostDetails(params = params)
 
-    override suspend fun insertPostDetails(postDetails: PostDetailsEntity) =
+    override suspend fun insertPostDetails(postDetails: PostDetailsEntity): Result<Unit> =
         localDataSource.insertPostDetails(postDetails = postDetails)
 
     override suspend fun getCachedPostDetails(postToken: String): Result<PostDetailsEntity> =

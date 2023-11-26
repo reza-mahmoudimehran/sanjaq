@@ -8,7 +8,7 @@ interface PostDetailsRepository {
 
     suspend fun fetchPostDetails(params: FetchPostDetailsParams): Result<PostDetailsDto>
 
-    suspend fun insertPostDetails(postDetails: PostDetailsEntity)
+    suspend fun insertPostDetails(postDetails: PostDetailsEntity): Result<Unit>
 
     suspend fun getCachedPostDetails(postToken: String): Result<PostDetailsEntity>
 }
