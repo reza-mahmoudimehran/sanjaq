@@ -6,16 +6,19 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ir.rezamahmoudi.divar.cityselection.data.datasource.local.CitySelectionDao
-import ir.rezamahmoudi.divar.cityselection.data.entity.CitiesEntity
+import ir.rezamahmoudi.divar.cityselection.data.entity.CityEntity
 import ir.rezamahmoudi.divar.core.data.typeconverter.WidgetTypeConverter
 import ir.rezamahmoudi.divar.core.util.constant.CoreConstants.DATABASE_NAME
+import ir.rezamahmoudi.divar.home.data.datasource.local.HomeDao
+import ir.rezamahmoudi.divar.home.data.entity.WidgetEntity
 import ir.rezamahmoudi.divar.postdetails.data.datasource.local.PostDetailsDao
 import ir.rezamahmoudi.divar.postdetails.data.entity.PostDetailsEntity
 
 @Database(
     entities = [
         PostDetailsEntity::class,
-        CitiesEntity::class
+        CityEntity::class,
+        WidgetEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -26,6 +29,8 @@ abstract class DivarDatabase : RoomDatabase() {
     abstract fun getPostDetailsDao(): PostDetailsDao
 
     abstract fun getCitySelectionDao(): CitySelectionDao
+
+    abstract fun getHomeDao(): HomeDao
 
     companion object {
         // Volatile annotation means any change to this field

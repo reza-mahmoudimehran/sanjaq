@@ -22,4 +22,7 @@ class DatabaseModule {
 
     @Provides
     fun provideCitySelectionDao(database: DivarDatabase) = database.getCitySelectionDao()
+
+    @Provides
+    fun provideHomeDao(database: DivarDatabase) = database.getHomeDao()
 }

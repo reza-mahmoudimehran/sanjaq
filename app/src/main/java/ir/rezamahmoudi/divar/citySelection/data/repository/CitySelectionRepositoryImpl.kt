@@ -2,7 +2,7 @@ package ir.rezamahmoudi.divar.cityselection.data.repository
 
 import ir.rezamahmoudi.divar.cityselection.data.datasource.local.CitySelectionLocalDataSourceImpl
 import ir.rezamahmoudi.divar.cityselection.data.datasource.remote.CitySelectionRemoteDataSource
-import ir.rezamahmoudi.divar.cityselection.data.entity.CitiesEntity
+import ir.rezamahmoudi.divar.cityselection.data.entity.CityEntity
 import ir.rezamahmoudi.divar.cityselection.data.model.CityDto
 import ir.rezamahmoudi.divar.cityselection.data.model.PlacesListResponse
 import ir.rezamahmoudi.divar.cityselection.domain.repository.CitySelectionRepository
@@ -18,9 +18,9 @@ class CitySelectionRepositoryImpl @Inject constructor(
     override suspend fun findCurrentCity(params: FindCurrentCityParams): Result<CityDto> =
         remoteDataSource.findCurrentCity(params = params)
 
-    override suspend fun getAllCities(): Result<List<CitiesEntity>> =
+    override suspend fun getAllCities(): Result<List<CityEntity>> =
         localDataSourceImpl.getAllCities()
 
-    override suspend fun insertCities(cities: List<CitiesEntity>): Result<Unit> =
+    override suspend fun insertCities(cities: List<CityEntity>): Result<Unit> =
         localDataSourceImpl.insertCities(cities = cities)
 }

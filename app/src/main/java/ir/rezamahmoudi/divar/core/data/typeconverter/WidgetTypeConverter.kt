@@ -11,8 +11,19 @@ import javax.inject.Inject
 class WidgetTypeConverter @Inject constructor(
     private val moshi: Moshi
 ) {
+
     @TypeConverter
-    fun fromJson(json: String): List<WidgetDto> {
+    fun widgetFromJson(json: String): WidgetDto? {
+        return moshi.adapter(WidgetDto::class.java).fromJson(json)
+    }
+
+    @TypeConverter
+    fun widgetToJson(entity: WidgetDto): String {
+        return moshi.adapter(WidgetDto::class.java).toJson(entity)
+    }
+
+    @TypeConverter
+    fun widgetListFromJson(json: String): List<WidgetDto> {
         return moshi.adapter<List<WidgetDto>>(
             Types.newParameterizedType(
                 List::class.java,
@@ -22,7 +33,7 @@ class WidgetTypeConverter @Inject constructor(
     }
 
     @TypeConverter
-    fun toJson(entity: List<WidgetDto>): String {
+    fun widgetListToJson(entity: List<WidgetDto>): String {
         return moshi.adapter<List<WidgetDto>>(
             Types.newParameterizedType(
                 List::class.java,

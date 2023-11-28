@@ -9,7 +9,7 @@ import ir.rezamahmoudi.divar.core.util.constant.DatabaseConstants.CITIES_TABLE_N
 @Entity(
     tableName = CITIES_TABLE_NAME
 )
-data class CitiesEntity(
+data class CityEntity(
     @PrimaryKey
     val id: Int,
     val name: String,

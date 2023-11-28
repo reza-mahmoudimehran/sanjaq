@@ -1,12 +1,12 @@
 package ir.rezamahmoudi.divar.cityselection.data.mappers
 
-import ir.rezamahmoudi.divar.cityselection.data.entity.CitiesEntity
+import ir.rezamahmoudi.divar.cityselection.data.entity.CityEntity
 import ir.rezamahmoudi.divar.cityselection.data.model.CityDto
 import ir.rezamahmoudi.divar.cityselection.presentation.model.CityUiModel
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 
-fun List<CitiesEntity>.asDomain(): ImmutableList<CityUiModel> = map {
+fun List<CityEntity>.asDomain(): ImmutableList<CityUiModel> = map {
     CityUiModel(
         id = it.id,
         name = it.name,
@@ -16,8 +16,8 @@ fun List<CitiesEntity>.asDomain(): ImmutableList<CityUiModel> = map {
     )
 }.toImmutableList()
 
-fun List<CityDto>.mapToEntity(): List<CitiesEntity> = map {
-    CitiesEntity(
+fun List<CityDto>.mapToEntity(): List<CityEntity> = map {
+    CityEntity(
         id = it.id,
         name = it.name,
         slug = it.slug,

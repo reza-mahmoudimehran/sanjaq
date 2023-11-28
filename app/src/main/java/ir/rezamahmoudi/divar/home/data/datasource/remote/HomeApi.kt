@@ -1,4 +1,4 @@
-package ir.rezamahmoudi.divar.home.data.datasource
+package ir.rezamahmoudi.divar.home.data.datasource.remote
 
 import ir.rezamahmoudi.divar.home.data.model.FetchPostsBody
 import ir.rezamahmoudi.divar.home.data.model.FetchPostsResponse
