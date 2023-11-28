@@ -1,4 +1,4 @@
-package ir.rezamahmoudi.divar.postdetails.data.datasource
+package ir.rezamahmoudi.divar.postdetails.data.datasource.remote
 
 import ir.rezamahmoudi.divar.postdetails.data.model.PostDetailsDto
 import ir.rezamahmoudi.divar.postdetails.domain.usecase.FetchPostDetailsParams

@@ -61,8 +61,9 @@ dependencies {
     val moshiVersion = "1.14.0"
     val coilVersion = "2.4.0"
     val lottieVersion = "4.0.0"
-    val pagingVersion = "3.2.1"
+    val pagingVersion = "3.3.0-alpha02"
     val accompanistVersion = "0.31.0-alpha"
+    val roomVersion = "2.6.0"
 
     // APP
     implementation("androidx.core:core-ktx:1.12.0")
@@ -96,6 +97,12 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
     implementation("com.squareup.moshi:moshi-adapters:$moshiVersion")
+
+    // Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-paging:$roomVersion")
 
     // Collections-Immutable
     implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:$immutableCollection")

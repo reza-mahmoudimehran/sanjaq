@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import ir.rezamahmoudi.divar.home.data.datasource.HomeApi
+import ir.rezamahmoudi.divar.home.data.datasource.remote.HomeApi
 import retrofit2.Retrofit
 
 @Module

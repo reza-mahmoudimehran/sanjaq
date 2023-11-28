@@ -1,4 +1,4 @@
-package ir.rezamahmoudi.divar.cityselection.data.datasource
+package ir.rezamahmoudi.divar.cityselection.data.datasource.remote
 
 import ir.rezamahmoudi.divar.cityselection.data.model.CityDto
 import ir.rezamahmoudi.divar.cityselection.data.model.FindCurrentCityBody

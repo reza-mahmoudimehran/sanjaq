@@ -18,11 +18,10 @@ class FetchPostsUseCase @Inject constructor(
     suspend operator fun invoke(): Flow<PagingData<WidgetDataUiModel>> {
         val selectedCityId = dataStoreRepository.read(PreferencesKeys.selectedCityId).first() ?: "1"
 
-        return repository.fetchPosts(params = FetchPostsParams(selectedCityId = selectedCityId))
-            .map { it.map { widget -> widget.data.asDomain() } }
+        return repository.fetchPosts(
+            params = FetchPostsParams(selectedCityId = selectedCityId)
+        ).map { it.map { widget -> widget.widgetDto.data.asDomain() } }
     }
 }
 
-data class FetchPostsParams(
-    val selectedCityId: String
-)
+data class FetchPostsParams(val selectedCityId: String)
