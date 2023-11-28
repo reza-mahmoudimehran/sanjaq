@@ -49,7 +49,7 @@ fun DivarNavHost(
     val navController = rememberNavController()
 
     val onNavigateToScreen = { route: String -> navController.navigate(route) }
-    val popBackStack: () -> Unit = { navController.popBackStack() }
+    val navigateUp: () -> Unit = { navController.navigateUp() }
 
     NavHost(
         navController = navController,
@@ -57,23 +57,22 @@ fun DivarNavHost(
         modifier = modifier
     ) {
         splashScreen(
-            onNavigateToScreen = onNavigateToScreen,
-            popBackStack = popBackStack
+            onNavigateToScreen = onNavigateToScreen
         )
 
         citySelectionScreen(
             onNavigateToScreen = onNavigateToScreen,
-            popBackStack = popBackStack
+            navigateUp = navigateUp
         )
 
         homeScreen(
             onNavigateToScreen = onNavigateToScreen,
-            popBackStack = popBackStack
+            navigateUp = navigateUp
         )
 
         postDetailsScreen(
             onNavigateToScreen = onNavigateToScreen,
-            popBackStack = popBackStack
+            navigateUp = navigateUp
         )
     }
 }

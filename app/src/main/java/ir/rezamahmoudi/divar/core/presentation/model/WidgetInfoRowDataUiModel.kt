@@ -6,4 +6,11 @@ import androidx.compose.runtime.Stable
 data class WidgetInfoRowDataUiModel(
     val title: String,
     val value: String
-) : WidgetDataUiModel
+) : WidgetDataUiModel {
+    companion object {
+        val EMPTY = WidgetInfoRowDataUiModel(
+            title = "",
+            value = ""
+        )
+    }
+}

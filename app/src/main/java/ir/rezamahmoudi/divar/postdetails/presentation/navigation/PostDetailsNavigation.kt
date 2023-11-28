@@ -10,7 +10,7 @@ import ir.rezamahmoudi.divar.postdetails.presentation.screen.PostDetailsScreen
 
 fun NavGraphBuilder.postDetailsScreen(
     onNavigateToScreen: (String) -> Unit,
-    popBackStack: () -> Unit
+    navigateUp: () -> Unit
 ) {
     composable(
         route = Screen.PostDetails.route,
@@ -23,7 +23,7 @@ fun NavGraphBuilder.postDetailsScreen(
         )
     ) {
         PostDetailsScreen(
-            popBackStack = popBackStack,
+            navigateUp = navigateUp,
             onNavigateToScreen = onNavigateToScreen
         )
     }

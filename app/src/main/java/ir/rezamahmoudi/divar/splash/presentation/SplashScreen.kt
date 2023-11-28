@@ -20,8 +20,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
-    onNavigateToScreen: (String) -> Unit,
-    popBackStack: () -> Unit
+    onNavigateToScreen: (String) -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -47,8 +46,7 @@ fun SplashScreen(
     }
 
     LaunchedEffect(key1 = Unit) {
-        delay(3_00)
-        popBackStack()
+        delay(3_000)
         onNavigateToScreen(Screen.CitySelection.route)
     }
 }

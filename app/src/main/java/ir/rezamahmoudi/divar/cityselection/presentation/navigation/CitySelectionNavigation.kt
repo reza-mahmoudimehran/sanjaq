@@ -7,12 +7,12 @@ import ir.rezamahmoudi.divar.core.presentation.screen.Screen
 
 fun NavGraphBuilder.citySelectionScreen(
     onNavigateToScreen: (String) -> Unit,
-    popBackStack: () -> Unit
+    navigateUp: () -> Unit
 ) {
     composable(Screen.CitySelection.route) {
         CitySelectionScreen(
             onNavigateToScreen = onNavigateToScreen,
-            popBackStack = popBackStack
+            navigateUp = navigateUp
         )
     }
 }

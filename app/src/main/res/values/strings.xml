@@ -3,4 +3,7 @@
     <string name="your_city_title">شهر شما</string>
     <string name="my_current_city_title">انتخاب شهر فعلی من</string>
     <string name="get_your_city_title">در حال دریافت شهر شما</string>
+    <string name="post_details_title">جزییات آگهی</string>
+    <string name="select_city_title">انتخاب شهر</string>
+    <string name="post_list_title">لیست آگهی ها</string>
 </resources>

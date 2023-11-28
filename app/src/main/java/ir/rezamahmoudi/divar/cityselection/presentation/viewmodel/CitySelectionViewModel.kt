@@ -36,6 +36,9 @@ class CitySelectionViewModel @Inject constructor(
 
     override fun event(event: CitySelectionContract.Event) {
         when (event) {
+            CitySelectionContract.Event.OnBackPressed -> {
+                onBackPressed()
+            }
             is CitySelectionContract.Event.OnSelectCity -> {
                 onSelectCity(cityId = event.cityId)
             }
@@ -48,6 +51,11 @@ class CitySelectionViewModel @Inject constructor(
             is CitySelectionContract.Event.UpdateIsPermissionGranted -> {
                 updateIsPermissionGranted(isGranted = event.isGranted)
             }
+        }
+    }
+    private fun onBackPressed() {
+        viewModelScope.launch {
+            effectChannel.send(CitySelectionContract.Effect.NavigateUp)
         }
     }
 

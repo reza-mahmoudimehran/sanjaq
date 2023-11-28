@@ -37,8 +37,18 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun event(event: HomeContract.Event) {
+        when (event) {
+            HomeContract.Event.OnBackPressed -> {
+                onBackPressed()
+            }
+        }
     }
 
+    private fun onBackPressed() {
+        viewModelScope.launch {
+            effectChannel.send(HomeContract.Effect.NavigateUp)
+        }
+    }
     private fun fetchPosts() {
         viewModelScope.launch {
             fetchPostsUseCase()
