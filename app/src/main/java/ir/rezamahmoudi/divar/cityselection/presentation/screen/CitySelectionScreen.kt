@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -25,17 +27,22 @@ import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionC
 import ir.rezamahmoudi.divar.cityselection.presentation.viewmodel.CitySelectionViewModel
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
 import ir.rezamahmoudi.divar.core.presentation.screen.Screen
+import ir.rezamahmoudi.divar.core.presentation.widget.navbar.NavBar
 import ir.rezamahmoudi.divar.core.util.compose.collectInLaunchedEffect
 import ir.rezamahmoudi.divar.core.util.compose.use
 import ir.rezamahmoudi.divar.core.util.location.getCurrentLocation
 import kotlinx.coroutines.InternalCoroutinesApi
 
-@OptIn(InternalCoroutinesApi::class, ExperimentalPermissionsApi::class)
+@OptIn(
+    InternalCoroutinesApi::class,
+    ExperimentalPermissionsApi::class,
+    ExperimentalMaterial3Api::class
+)
 @Composable
 fun CitySelectionScreen(
     viewModel: CitySelectionViewModel = hiltViewModel(),
     onNavigateToScreen: (String) -> Unit,
-    popBackStack: () -> Unit
+    navigateUp: () -> Unit
 ) {
     val (state, effect, dispatcher) = use(viewModel = viewModel)
 
@@ -52,8 +59,8 @@ fun CitySelectionScreen(
 
     effect.collectInLaunchedEffect {
         when (it) {
-            CitySelectionContract.Effect.PopBackStack -> {
-                popBackStack()
+            CitySelectionContract.Effect.NavigateUp -> {
+                navigateUp()
             }
 
             CitySelectionContract.Effect.NavigateToHome -> {
@@ -92,42 +99,54 @@ fun CitySelectionScreen(
         }
     }
 
-    LazyColumn(
-        modifier = Modifier
-            .padding(horizontal = AppTheme.dimensions.mainContentPadding)
-            .fillMaxSize()
-    ) {
-        item {
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        if (state.isLocationPermissionGranted.not()) {
-                            dispatcher.invoke(CitySelectionContract.Event.OnRequestLocationPermission)
-                        } else {
-                            state.currentCity?.id?.let {
-                                dispatcher.invoke(CitySelectionContract.Event.OnSelectCity(it.toString()))
-                            }
-                        }
-                    }
-                    .padding(vertical = 12.dp, horizontal = 2.dp),
-                text = if (state.isLocationPermissionGranted) {
-                    state.currentCity?.name?.let { "${stringResource(id = R.string.your_city_title)}: $it" }
-                        ?: stringResource(id = R.string.get_your_city_title)
-                } else {
-                    stringResource(id = R.string.my_current_city_title)
-                },
-                style = AppTheme.typography.text14Bold,
-                color = AppTheme.colors.designSystem.primaryText
-            )
-        }
-        items(items = state.cities, key = { it.id }) { city ->
-            CityItem(
-                city = city,
-                onSelectCity = {
-                    dispatcher.invoke(CitySelectionContract.Event.OnSelectCity(it))
+    Scaffold(
+        topBar = {
+            NavBar(
+                text = stringResource(id = R.string.select_city_title),
+                navigateUp = {
+                    dispatcher(CitySelectionContract.Event.OnBackPressed)
                 }
             )
+        }
+    ) { paddingValues ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(horizontal = AppTheme.dimensions.mainContentPadding)
+                .fillMaxSize()
+        ) {
+            item {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            if (state.isLocationPermissionGranted.not()) {
+                                dispatcher.invoke(CitySelectionContract.Event.OnRequestLocationPermission)
+                            } else {
+                                state.currentCity?.id?.let {
+                                    dispatcher.invoke(CitySelectionContract.Event.OnSelectCity(it.toString()))
+                                }
+                            }
+                        }
+                        .padding(vertical = 12.dp, horizontal = 2.dp),
+                    text = if (state.isLocationPermissionGranted) {
+                        state.currentCity?.name?.let { "${stringResource(id = R.string.your_city_title)}: $it" }
+                            ?: stringResource(id = R.string.get_your_city_title)
+                    } else {
+                        stringResource(id = R.string.my_current_city_title)
+                    },
+                    style = AppTheme.typography.text14Bold,
+                    color = AppTheme.colors.designSystem.primaryText
+                )
+            }
+            items(items = state.cities, key = { it.id }) { city ->
+                CityItem(
+                    city = city,
+                    onSelectCity = {
+                        dispatcher.invoke(CitySelectionContract.Event.OnSelectCity(it))
+                    }
+                )
+            }
         }
     }
 }

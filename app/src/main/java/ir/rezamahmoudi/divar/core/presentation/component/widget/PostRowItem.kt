@@ -1,5 +1,6 @@
 package ir.rezamahmoudi.divar.core.presentation.component.widget
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,10 +31,13 @@ fun PostRowItem(
     onNavigateToScreen: (String) -> Unit
 ) {
     Column(
-        modifier = modifier.clickable {
-            onNavigateToScreen(Screen.PostDetails.createRoute(postToken = post.token))
-        }
-            .padding(vertical = 4.dp, horizontal = AppTheme.dimensions.mainContentPadding)
+        modifier = modifier
+            .padding(vertical = 4.dp)
+            .clickable {
+                onNavigateToScreen(Screen.PostDetails.createRoute(postToken = post.token))
+            }
+            .background(color = AppTheme.colors.designSystem.primaryBackground)
+            .padding(horizontal = AppTheme.dimensions.mainContentPadding)
     ) {
         Row(
             modifier = Modifier

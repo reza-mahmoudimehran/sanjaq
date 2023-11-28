@@ -6,9 +6,13 @@ import ir.rezamahmoudi.divar.postdetails.presentation.model.PostDetailsUiModel
 
 interface PostDetailsContract :
     UnidirectionalViewModel<PostDetailsContract.Event, PostDetailsContract.Effect, PostDetailsContract.State> {
-    interface Event
+    interface Event {
+        object OnBackPressed : Event
+    }
 
-    interface Effect
+    interface Effect {
+        object NavigateUp : Effect
+    }
 
     @Stable
     data class State(

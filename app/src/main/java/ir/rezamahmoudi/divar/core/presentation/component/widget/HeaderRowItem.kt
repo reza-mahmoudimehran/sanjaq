@@ -1,5 +1,6 @@
 package ir.rezamahmoudi.divar.core.presentation.component.widget
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,6 +21,7 @@ fun HeaderRowItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
+            .background(color = AppTheme.colors.designSystem.primaryBackground)
             .padding(vertical = 4.dp, horizontal = AppTheme.dimensions.mainContentPadding)
     ) {
         Text(

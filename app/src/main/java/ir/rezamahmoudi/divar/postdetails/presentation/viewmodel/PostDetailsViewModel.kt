@@ -36,6 +36,15 @@ class PostDetailsViewModel @Inject constructor(
 
     override fun event(event: PostDetailsContract.Event) {
         when (event) {
+            PostDetailsContract.Event.OnBackPressed -> {
+                onBackPressed()
+            }
+        }
+    }
+
+    private fun onBackPressed() {
+        viewModelScope.launch {
+            effectChannel.send(PostDetailsContract.Effect.NavigateUp)
         }
     }
 

@@ -9,9 +9,13 @@ import kotlinx.coroutines.flow.flowOf
 
 interface HomeContract : UnidirectionalViewModel<HomeContract.Event, HomeContract.Effect, HomeContract.State> {
 
-    interface Event
+    interface Event {
+        object OnBackPressed : Event
+    }
 
-    interface Effect
+    interface Effect {
+        object NavigateUp : Effect
+    }
 
     @Stable
     data class State(

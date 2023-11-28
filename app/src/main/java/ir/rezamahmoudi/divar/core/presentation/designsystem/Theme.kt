@@ -93,10 +93,15 @@ private val lightColorPalette = AppColors(
 )
 
 private val darkColorPalette = AppColors(
-    materialColorScheme = darkColorScheme(
-        // You can override default colors
-    ),
-    designSystem = DesignSystem()
+    materialColorScheme = darkColorScheme(),
+    designSystem = DesignSystem(
+        primaryBackground = Gray90,
+        primaryCardBackground = Gray80,
+        primaryText = Gray20,
+        secondaryText = Lemon,
+        primaryIconTint = Gray50,
+        primaryDivider = Gray20
+    )
 )
 
 private val appTypography = AppTypography(

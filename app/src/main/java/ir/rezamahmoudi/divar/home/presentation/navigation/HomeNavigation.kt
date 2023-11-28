@@ -7,11 +7,11 @@ import ir.rezamahmoudi.divar.home.presentation.screen.HomeScreen
 
 fun NavGraphBuilder.homeScreen(
     onNavigateToScreen: (String) -> Unit,
-    popBackStack: () -> Unit
+    navigateUp: () -> Unit
 ) {
     composable(Screen.Home.route) {
         HomeScreen(
-            popBackStack = popBackStack,
+            navigateUp = navigateUp,
             onNavigateToScreen = onNavigateToScreen
         )
     }

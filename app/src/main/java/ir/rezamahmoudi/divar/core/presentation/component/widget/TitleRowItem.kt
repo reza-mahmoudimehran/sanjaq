@@ -1,5 +1,6 @@
 package ir.rezamahmoudi.divar.core.presentation.component.widget
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
@@ -17,6 +18,7 @@ fun TitleRowItem(
     Text(
         modifier = modifier
             .fillMaxWidth()
+            .background(color = AppTheme.colors.designSystem.primaryBackground)
             .padding(vertical = 12.dp, horizontal = AppTheme.dimensions.mainContentPadding),
         text = title.text,
         style = AppTheme.typography.text16ExtraBold,
