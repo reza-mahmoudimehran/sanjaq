@@ -130,6 +130,13 @@ dependencies {
     // TEST
     testImplementation("junit:junit:4.13.2")
 
+    // Testing Coroutines
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
+
+    // Mocking objects
+    testImplementation("org.mockito:mockito-core:3.12.4")
+    testImplementation("com.google.truth:truth:1.1.3")
+
     // ANDROID TEST
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
