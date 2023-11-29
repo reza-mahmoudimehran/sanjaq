@@ -2,7 +2,6 @@ package ir.rezamahmoudi.divar.core.presentation.widget.image
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -25,19 +24,17 @@ fun NetworkImage(
 ) {
     val context = LocalContext.current
 
-    val model = remember {
-        ImageRequest.Builder(context)
-            .data(url)
-            .decoderFactory(SvgDecoder.Factory())
-            .diskCacheKey(url)
-            .memoryCacheKey(url)
-            .scale(Scale.FILL)
-            .placeholder(R.drawable.logo_transparent)
-            .error(R.drawable.logo_transparent)
-            .crossfade(true)
-            .crossfade(100)
-            .build()
-    }
+    val model = ImageRequest.Builder(context)
+        .data(url)
+        .decoderFactory(SvgDecoder.Factory())
+        .diskCacheKey(url)
+        .memoryCacheKey(url)
+        .scale(Scale.FILL)
+        .placeholder(R.drawable.logo_transparent)
+        .error(R.drawable.logo_transparent)
+        .crossfade(true)
+        .crossfade(100)
+        .build()
 
     Box(
         modifier = modifier,
