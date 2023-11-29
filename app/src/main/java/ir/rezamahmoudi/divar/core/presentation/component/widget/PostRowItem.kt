@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import ir.rezamahmoudi.divar.core.presentation.designsystem.AppTheme
 import ir.rezamahmoudi.divar.core.presentation.designsystem.ThemePreviews
@@ -23,6 +24,7 @@ import ir.rezamahmoudi.divar.core.presentation.model.WidgetPostRowDataUiModel
 import ir.rezamahmoudi.divar.core.presentation.screen.Screen
 import ir.rezamahmoudi.divar.core.presentation.widget.image.NetworkImage
 import ir.rezamahmoudi.divar.core.util.compose.PreviewWrapper
+import ir.rezamahmoudi.divar.core.util.test.TestTagConstants.POST_ROW_ITEM_TEST_TAG
 
 @Composable
 fun PostRowItem(
@@ -38,6 +40,7 @@ fun PostRowItem(
             }
             .background(color = AppTheme.colors.designSystem.primaryBackground)
             .padding(horizontal = AppTheme.dimensions.mainContentPadding)
+            .testTag(POST_ROW_ITEM_TEST_TAG)
     ) {
         Row(
             modifier = Modifier
